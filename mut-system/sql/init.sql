@@ -1,24 +1,5 @@
 create database db_multi
 
-create table tb_tag
-(
-    id          bigint auto_increment comment 'id'
-        primary key,
-    tag_name    varchar(256)                       null comment '标签名',
-    user_id     bigint                             null comment '用户id',
-    parent_id   bigint                             null comment '父标签id',
-    parent_flag tinyint                            null comment '是否父标签，1是，0否',
-    create_time datetime default CURRENT_TIMESTAMP null comment '创建时间',
-    update_time datetime default CURRENT_TIMESTAMP null comment '更新时间',
-    deleted     tinyint  default 0                 not null comment '是否删除',
-    constraint uniIdx_tag_name
-        unique (tag_name)
-)
-    comment '标签表';
-
-create index idx_user_id
-    on tb_tag (user_id);
-
 create table tb_team
 (
     id          bigint auto_increment comment 'id'
